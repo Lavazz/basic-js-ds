@@ -59,7 +59,7 @@ class BinarySearchTree {
 
 
   find(data) {
-   
+
     return findNode(this.rootPoint, data);
 
     function findNode(node, data) {
@@ -79,7 +79,7 @@ class BinarySearchTree {
     }
   }
 
-  remove(data) {   
+  remove(data) {
     this.rootPoint = removeNode(this.rootPoint, data);
 
     function removeNode(node, data) {
@@ -123,19 +123,19 @@ class BinarySearchTree {
   }
 
   min(root = this.rootPoint) {
-    if(root.left===null){
+    if (root.left === null) {
       return root.data
     }
-    else{
+    else {
       return this.min(root.left);
     }
   }
 
   max(root = this.rootPoint) {
-    if(root.right===null){
+    if (root.right === null) {
       return root.data
     }
-    else{
+    else {
       return this.max(root.right);
     }
   }
