@@ -1,13 +1,12 @@
 const { NotImplementedError } = require('../extensions/index.js');
 
-// const { Node } = require('../extensions/list-tree.js');
+const { Node } = require('../extensions/list-tree.js');
 
 /**
 * Implement simple binary search tree according to task description
 * using Node from extensions
 */
 class BinarySearchTree {
-
   constructor() {
     this.rootPoint = null;
   }
@@ -19,19 +18,19 @@ class BinarySearchTree {
   add(data) {
     this.rootPoint = insertValue(this.rootPoint, data);
 
-    function insertValue(node, data) {
+    function insertValue(node, value) {
       if (!node) {
-        return new Node(data);
+        return new Node(value);
       }
 
-      if (node.data === data) {
+      if (node.data === value) {
         return node;
       }
 
-      if (data < node.data) {
-        node.left = addData(node.left, data);
+      if (value < node.data) {
+        node.left = insertValue(node.left, value);
       } else {
-        node.right = addData(node.right, data);
+        node.right = insertValue(node.right, value);
       }
 
       return node;
@@ -58,6 +57,7 @@ class BinarySearchTree {
     }
   }
 
+
   find(data) {
    
     return findNode(this.rootPoint, data);
@@ -79,8 +79,7 @@ class BinarySearchTree {
     }
   }
 
-  remove(data) {
-   
+  remove(data) {   
     this.rootPoint = removeNode(this.rootPoint, data);
 
     function removeNode(node, data) {
@@ -121,7 +120,6 @@ class BinarySearchTree {
 
       }
     }
-
   }
 
   min(root = this.rootPoint) {
@@ -129,7 +127,7 @@ class BinarySearchTree {
       return root.data
     }
     else{
-      return this.min(root.left)
+      return this.min(root.left);
     }
   }
 
@@ -138,9 +136,10 @@ class BinarySearchTree {
       return root.data
     }
     else{
-      return this.max(root.right)
+      return this.max(root.right);
     }
   }
+
 }
 
 module.exports = {
